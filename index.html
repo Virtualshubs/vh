@@ -44,26 +44,26 @@ body {
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem; /* solo padding lateral, vertical controlado por flex */
+  padding: 0 1rem; 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  height: 45px; /* altura total = 8px arriba + 32px contenido + 8px abajo */
+  height: 45px; 
 }
 
 .nav-menu {
   display: flex;
   gap: 1.6rem;
   font-weight: 200;
-  font-size: 0.8rem; /* letra ligeramente más pequeña */
-  height: 32px; /* contenido del nav con 8px arriba y abajo dentro del header */
-  align-items: center; /* centra verticalmente */
+  font-size: 0.8rem;
+  height: 32px; 
+  align-items: center;
 
-  background: rgba(255, 255, 255, 0.85); /* color de fondo semitransparente */
-  padding: 0 1rem; /* un poco de padding lateral */
-  border-radius: 12px; /* opcional: esquinas redondeadas */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* opcional: sombra suave para destacar */
+  background: rgba(255, 255, 255, 0.85); 
+  padding: 0 1rem;
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
 }
 
 .nav-menu a {
@@ -73,28 +73,27 @@ body {
 }
 
 .nav-menu a:hover {
-  color: #0070f3; /* pequeño cambio de color más visible al pasar */
+  color: #0070f3; 
 }
 
 
 .search-bar input {
-  height: 32px; /* mismo alto que el contenido */
-  padding: 0 0.8rem; /* solo lateral, vertical controlado por altura */
+  height: 32px; 
+  padding: 0 0.8rem; 
   border-radius: 999px;
   border: 1px solid #ccc;
   font-size: 0.8rem;
   box-sizing: border-box;
 }
 
- /* ===== Botones de cambio de idioma ===== */
 .lang-switch {
   display: flex;
-  gap: 0.5rem; /* separación entre botones */
+  gap: 0.5rem; 
 }
 
 .lang-switch button {
-  background-color: #ffffff; /* fondo blanco */
-  color: #0070f3; /* azul corporativo */
+  background-color: #ffffff;
+  color: #0070f3; 
   border: 2px solid #0070f3;
   border-radius: 6px;
   padding: 6px 12px;
@@ -119,7 +118,6 @@ body {
   font-weight: bold;
 }
 
-/* ===== Botones ===== */
 .btn-group {
   display: flex;
   gap: 1rem;
@@ -137,24 +135,22 @@ body {
 }
 
 .btn-secondary {
-  background: transparent;       /* mantiene el fondo transparente */
-  color: #000000;               /* texto negro */
+  background: transparent;     
+  color: #000000;             
   padding: 0.9rem 1.8rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 200;
-  border: 2px solid #000000;   /* contorno negro */
-  transition: all 0.3s ease;    /* transición suave para hover */
+  border: 2px solid #000000;  
+  transition: all 0.3s ease;   
 }
 
 .btn-secondary:hover {
-  background: #000000;           /* fondo negro al pasar el ratón */
-  color: #fff;                   /* texto blanco al pasar el ratón */
-  border-color: #000000;         /* mantiene el contorno */
+  background: #000000;       
+  color: #fff;               
+  border-color: #000000;       
 }
 
-
-/* ===== HERO VIDEO ===== */
 .hero {
   position: relative;
    min-height: 93vh;
@@ -165,7 +161,7 @@ body {
   justify-content: center;
   text-align: center;
   color: #fff;
-  margin-bottom: 10px; /* espacio abajo del banner */
+  margin-bottom: 10px; 
 }
 
 .hero video {
@@ -237,18 +233,18 @@ body {
   display: inline-block;
   padding: 0.8rem 1.2rem;
   border-radius: 12px;
-    background: rgba(255, 255, 255, 0.809); /* puedes cambiar color/transparencia */
+    background: rgba(255, 255, 255, 0.809); 
   backdrop-filter: blur(50px);
 }
 
-/* Ajuste tipográfico dentro */
+
 .frosted h3{
   color: #111;font-size: 1.9rem;
 }
 .frosted p {
   color: #111;font-size: 1.1rem;
 }
-/* ===== GRID APPLE (SISTEMA DE TILES) ===== */
+
 .grid-section {
   width: 100%;
   margin: 0;
@@ -298,7 +294,7 @@ body {
 .benefits-section {
   padding: 5rem 1rem;
    background: #161616;
-    margin-bottom: 10px; /* espacio abajo del banner */
+    margin-bottom: 10px; 
 }
 
 .benefits-wrapper {
@@ -338,7 +334,7 @@ body {
 .metrics-section {
   background: #dbb54d;
   padding: 4rem 1rem;
-    margin-bottom: 10px; /* espacio abajo del banner */
+    margin-bottom: 10px; 
 }
 
 .metrics-wrapper {
@@ -365,7 +361,7 @@ body {
 .comparison-section {
     background: #030033;
   padding: 5rem 1rem;
-    margin-bottom: 10px; /* espacio abajo del banner */
+    margin-bottom: 10px;
 }
 
 .comparison-wrapper {
@@ -419,7 +415,7 @@ body {
 .why-section {
   padding: 5rem 1rem;
   background: #ffffff;
-    margin-bottom: 10px; /* espacio abajo del banner */
+    margin-bottom: 10px; 
 }
 
 .why-wrapper {
@@ -536,14 +532,13 @@ body {
 }
 
 .carousel-item {
-  position: relative; /* 👈 FIX CRÍTICO */
+  position: relative; 
   flex: 0 0 calc(100% - 16px);
   height: 750px;
   background-size: cover;
   background-position: center;
 }
 
-/* ===== FROSTED SOLO PARA CAROUSEL ===== */
 .frosted-carousel {
   display: inline-block;
   max-width: 520px;
@@ -557,7 +552,6 @@ body {
   box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
-/* Contenido por slide */
 .carousel-content {
   position: absolute;
   bottom: 3rem;
@@ -577,7 +571,6 @@ body {
 
 
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .grid-section {
     grid-template-columns: 1fr;
@@ -596,7 +589,7 @@ body {
   }
 }
 
-/* ===== DOTS ===== */
+
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -1395,21 +1388,25 @@ interactive marketing company
   </div>
 </footer>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LRM1MV7ET7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LRM1MV7ET7');
+</script>
 
 <script>
-  // Idioma por defecto
-  let currentLang = 'es';
 
-  // Función para establecer idioma
+  let currentLang = 'es';
   function setLanguage(lang) {
     currentLang = lang;
 
-    // Mostrar/ocultar todos los elementos con data-lang
     document.querySelectorAll('[data-lang]').forEach(el => {
       el.style.display = (el.getAttribute('data-lang') === lang) ? 'inline' : 'none';
     });
 
-    // Cambiar placeholders de los inputs según el idioma disponible
     document.querySelectorAll('input[data-placeholder-es]').forEach(input => {
       const placeholderAttr = 'data-placeholder-' + lang;
       if(input.hasAttribute(placeholderAttr)) {
@@ -1417,17 +1414,15 @@ interactive marketing company
       }
     });
 
-    // Actualizar la URL sin recargar
     const url = new URL(window.location);
     if(lang === 'es') {
-      url.searchParams.delete('lang'); // Español = limpio
+      url.searchParams.delete('lang'); 
     } else {
-      url.searchParams.set('lang', lang); // Agrega lang=en o lang=fr
+      url.searchParams.set('lang', lang); 
     }
     history.replaceState(null, '', url.toString());
   }
 
-  // Inicializar idioma al cargar según query param
   window.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const langParam = urlParams.get('lang');
@@ -1437,8 +1432,6 @@ interactive marketing company
     setLanguage(currentLang);
   });
 </script>
-
-
 
 <script>
 const searchInput = document.querySelector('.search-bar input');
@@ -1460,18 +1453,16 @@ const dots = document.querySelectorAll(".carousel-dot");
 const totalItems = track.children.length;
 let currentIndex = 0;
 let autoSlideInterval = null;
-
-// Función para mover el track
+ 
 function goToSlide(index) {
   currentIndex = index;
-  const offset = -index * (track.children[0].offsetWidth + 8); // 8px gap
+  const offset = -index * (track.children[0].offsetWidth + 8); 
   track.style.transform = `translateX(${offset}px)`;
   
   dots.forEach(dot => dot.classList.remove("active"));
   dots[currentIndex].classList.add("active");
 }
 
-// Evento click en los dots
 dots.forEach((dot, idx) => {
   dot.addEventListener("click", () => {
     resetAutoSlide();
@@ -1479,7 +1470,7 @@ dots.forEach((dot, idx) => {
   });
 });
 
-// Auto slide lento
+
 function startAutoSlide() {
   autoSlideInterval = setInterval(() => {
     let nextIndex = (currentIndex + 1) % totalItems;
@@ -1487,17 +1478,17 @@ function startAutoSlide() {
   }, 4000); // cambia cada 4 segundos
 }
 
-// Reinicia el auto slide al interactuar
+
 function resetAutoSlide() {
   clearInterval(autoSlideInterval);
   startAutoSlide();
 }
 
-// Inicializamos
+
 goToSlide(0);
 startAutoSlide();
 
-// Ajusta al redimensionar
+
 window.addEventListener("resize", () => goToSlide(currentIndex));
 </script>
 
