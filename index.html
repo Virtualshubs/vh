@@ -74,12 +74,12 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .reel-category h3{font-size:30px;font-weight:500;letter-spacing:-.045em;margin:0 0 6px}
 .reel-category p{font-size:14px;color:#777;margin:0}
 .reels-track{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:0 0 24px;scrollbar-width:thin}
-.reel-card{flex:0 0 320px;min-height:760px;background:#ddd;scroll-snap-align:start;position:relative}
-.reel-card.instagram-card{height:760px;overflow:hidden}
-.reel-card.tiktok-card{height:700px;overflow:hidden}
+.reel-card{flex:0 0 320px;background:#ddd;scroll-snap-align:start;position:relative;overflow:hidden}
+.reel-card.instagram-card{height:auto;min-height:760px}
+.reel-card.tiktok-card{height:auto;min-height:700px}
 .reel-card blockquote{margin:0!important}
-.reel-card .instagram-media{width:100%!important;min-width:0!important;max-width:none!important}
-.reel-card .tiktok-embed{width:100%!important;min-width:0!important;max-width:none!important}
+.reel-card .instagram-media{width:100%!important;min-width:0!important;max-width:none!important;margin:0!important}
+.reel-card .tiktok-embed{width:100%!important;min-width:0!important;max-width:none!important;margin:0!important}
 .reels-note{font-size:12px;color:#888;margin-top:18px}
 .calendar{border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
 .calendar-row{display:grid;grid-template-columns:130px repeat(5,1fr)}
@@ -120,8 +120,6 @@ h1{font-size:clamp(54px,15vw,86px)}
 .reel-category-head{display:block}
 .reel-category h3{font-size:26px}
 .reel-card{flex-basis:300px}
-.reel-card.instagram-card{height:760px}
-.reel-card.tiktok-card{height:700px}
 .calendar{overflow-x:auto}
 .calendar-row{min-width:720px}
 .brands-grid{grid-template-columns:repeat(2,1fr)}
@@ -130,6 +128,8 @@ h1{font-size:clamp(54px,15vw,86px)}
 footer{display:block}
 footer div+div{margin-top:8px}
 }
+
+
 </style>
 </head>
 <body>
