@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contenido estratégico para marcas | Social Media</title>
+<meta name="description" content="Estrategia, consultoría y creación de contenido para redes sociales. Planificamos, creamos, editamos y publicamos el contenido de tu marca.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f5f4f0;color:#171717;font-family:Arial,Helvetica,sans-serif;line-height:1.45}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+header{height:82px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:16px;font-weight:700;letter-spacing:-.04em}
+.nav{display:flex;gap:28px;font-size:13px;color:#666}
+.nav a:hover{color:#111}
+.hero{padding:115px 0 100px}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:#777;margin-bottom:30px}
+h1{font-size:clamp(58px,8vw,110px);font-weight:500;line-height:.9;letter-spacing:-.07em;max-width:1050px;margin:0 0 42px}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:50px}
+.hero-bottom p{max-width:590px;font-size:20px;color:#666;margin:0}
+.button{display:inline-flex;background:#171717;color:#fff;padding:15px 22px;border-radius:3px;font-size:14px;white-space:nowrap}
+.button:hover{background:#333}
+.hero-image{height:410px;margin-top:65px;overflow:hidden}
+.hero-image img{filter:saturate(.68)}
+.section{border-top:1px solid #d7d5cf;padding:105px 0}
+.section-head{display:flex;justify-content:space-between;gap:50px;margin-bottom:55px}
+h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing:-.055em;margin:0}
+.intro{max-width:380px;color:#666;margin:5px 0 0}
+.service-main{display:grid;grid-template-columns:90px 1fr 320px;gap:30px;padding:38px 0;border-top:1px solid #d7d5cf}
+.service-main:last-child{border-bottom:1px solid #d7d5cf}
+.service-number{font-size:12px;color:#888}
+.service-main h3{font-size:38px;font-weight:500;letter-spacing:-.045em;margin:0 0 16px}
+.service-main p{max-width:650px;color:#666;margin:0}
+.service-list{list-style:none;margin:0;padding:0;color:#555;font-size:14px}
+.service-list li{padding:8px 0;border-bottom:1px solid #d7d5cf}
+.content-intro{max-width:720px;font-size:18px;color:#666;margin:-20px 0 50px}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
+.package{padding:30px;border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;min-height:500px;display:flex;flex-direction:column}
+.package.featured{background:#ebe9e3}
+.package-label{font-size:11px;letter-spacing:.14em;color:#888;margin-bottom:60px}
+.package h3{font-size:30px;font-weight:500;letter-spacing:-.045em;margin:0 0 10px}
+.package .amount{font-size:19px;margin-bottom:25px}
+.package p{color:#666;margin:0 0 25px}
+.package ul{list-style:none;padding:0;margin:auto 0 0;border-top:1px solid #d7d5cf}
+.package li{font-size:14px;padding:9px 0;border-bottom:1px solid #d7d5cf}
+.package-note{font-size:13px;color:#777;margin-top:24px}
+.highlight{padding:115px 0}
+.highlight-text{font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.055em;font-weight:500;max-width:950px}
+.highlight-sub{margin-top:30px;color:#777}
+.reels-section{overflow:hidden}
+.reels-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin}
+.reel-card{flex:0 0 280px;height:500px;background:#ddd;scroll-snap-align:start;overflow:hidden;position:relative}
+.reel-card .instagram-media{margin:0!important;min-width:100%!important;width:100%!important;height:100%!important}
+.reel-placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:#777;font-size:13px;text-align:center;padding:30px}
+.reels-note{font-size:12px;color:#888;margin-top:18px}
+.calendar{border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
+.calendar-row{display:grid;grid-template-columns:130px repeat(5,1fr)}
+.calendar-row>div{min-height:76px;padding:16px;border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;font-size:13px}
+.calendar-head>div{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#888;min-height:48px}
+.calendar-label{color:#777;background:#ebe9e3}
+.content-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;color:#777}
+.work-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:14px}
+.work{height:480px;position:relative;overflow:hidden;background:#ddd}
+.work.small{height:233px}
+.work img{transition:transform .6s ease}
+.work:hover img{transform:scale(1.025)}
+.work-label{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);padding:9px 12px;font-size:12px}
+.stack{display:grid;gap:14px}
+.cta{padding:150px 0;text-align:center}
+.cta h2{max-width:950px;margin:0 auto 35px}
+.cta p{color:#666;font-size:18px;margin:0 0 35px}
+footer{border-top:1px solid #d7d5cf;padding:25px 0 30px;display:flex;justify-content:space-between;gap:30px;color:#777;font-size:12px}
+@media(max-width:800px){
+.wrap{width:calc(100% - 30px)}
+header{height:70px}
+.nav{display:none}
+.hero{padding:80px 0 70px}
+h1{font-size:clamp(54px,15vw,86px)}
+.hero-bottom{display:block}
+.hero-bottom p{font-size:18px;margin-bottom:28px}
+.hero-image{height:280px;margin-top:45px}
+.section{padding:75px 0}
+.section-head{display:block}
+.intro{margin-top:25px}
+.service-main{grid-template-columns:45px 1fr}
+.service-list{grid-column:2;margin-top:20px}
+.service-main h3{font-size:31px}
+.packages{grid-template-columns:1fr}
+.package{min-height:420px}
+.highlight{padding:80px 0}
+.reel-card{flex-basis:250px;height:445px}
+.calendar{overflow-x:auto}
+.calendar-row{min-width:720px}
+.work-grid{grid-template-columns:1fr}
+.work,.work.small{height:300px}
+.cta{padding:100px 0}
+footer{display:block}
+footer div+div{margin-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="logo" href="#">NOMBRE DE MARCA</a>
+<nav class="nav">
+<a href="#servicios">Servicios</a>
+<a href="#contenido">Contenido</a>
+<a href="#trabajos">Trabajos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="eyebrow">Estrategia · Social Media · Contenido</div>
+<h1>Impulsamos el contenido de tu marca.</h1>
+<div class="hero-bottom">
+<p>Te ayudamos a definir qué comunicar, crear el contenido y mantener una presencia constante en redes sociales.</p>
+<a class="button" href="#contacto">Quiero impulsar mi contenido&nbsp; →</a>
+</div>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85" alt="Equipo trabajando en una estrategia de contenido">
+</div>
+</section>
+
+<section class="section" id="servicios">
+<div class="section-head">
+<h2>Dos formas<br>de ayudarte.</h2>
+<p class="intro">Desde la estrategia y consultoría hasta la creación y publicación de contenido mensual para redes sociales.</p>
+</div>
+
+<div class="service-main">
+<div class="service-number">01</div>
+<div>
+<h3>Estrategia &amp; Consultoría</h3>
+<p>Para marcas que necesitan ordenar su comunicación, definir una estrategia y saber qué hacer con sus redes sociales.</p>
+</div>
+<ul class="service-list">
+<li>Estrategia de contenidos</li>
+<li>Análisis de marca y audiencia</li>
+<li>Objetivos de comunicación</li>
+<li>Planificación editorial</li>
+<li>Consultoría y acompañamiento</li>
+</ul>
+</div>
+
+<div class="service-main">
+<div class="service-number">02</div>
+<div>
+<h3>Social Media Content Creator</h3>
+<p>Un servicio mensual de producción de contenido pensado para que tu marca tenga siempre algo relevante que publicar.</p>
+</div>
+<ul class="service-list">
+<li>Contenido estratégico</li>
+<li>Posts y carruseles</li>
+<li>Reels y vídeo</li>
+<li>Copies y guiones</li>
+<li>Edición y publicación</li>
+</ul>
+</div>
+</section>
+
+<section class="section" id="contenido">
+<div class="section-head">
+<h2>Contenido para<br>todo el mes.</h2>
+<p class="intro">Elige el volumen que necesita tu marca. Nosotros planificamos, creamos, editamos y dejamos publicado el contenido.</p>
+</div>
+
+<p class="content-intro">La grabación corre a cargo de la marca. Nosotros preparamos todo lo necesario para que cada vídeo tenga sentido: guion, estructura, indicaciones y una referencia del estilo que buscamos.</p>
+
+<div class="packages">
+
+<article class="package">
+<div class="package-label">CONTENIDO 12</div>
+<h3>12 contenidos</h3>
+<div class="amount">6 Reels + 6 posts</div>
+<p>Una presencia constante y estratégica durante todo el mes.</p>
+<ul>
+<li>Estrategia y calendario mensual</li>
+<li>Diseño profesional de posts y carruseles</li>
+<li>Guiones para vídeo</li>
+<li>Vídeos de referencia</li>
+<li>Edición profesional de Reels</li>
+<li>Copies</li>
+<li>Publicación en redes</li>
+</ul>
+</article>
+
+<article class="package featured">
+<div class="package-label">CONTENIDO 24</div>
+<h3>24 contenidos</h3>
+<div class="amount">12 Reels + 12 posts</div>
+<p>Más frecuencia y variedad para marcas con una comunicación más activa.</p>
+<ul>
+<li>Estrategia y calendario mensual</li>
+<li>Diseño profesional de posts y carruseles</li>
+<li>Guiones para vídeo</li>
+<li>Vídeos de referencia</li>
+<li>Edición profesional de Reels</li>
+<li>Copies</li>
+<li>Publicación en redes</li>
+</ul>
+</article>
+
+<article class="package">
+<div class="package-label">CONTENIDO 30</div>
+<h3>30 contenidos</h3>
+<div class="amount">Servicio personalizado</div>
+<p>Para marcas con necesidades de producción y comunicación de mayor volumen.</p>
+<ul>
+<li>Estrategia y calendario mensual</li>
+<li>Diseño profesional de posts y carruseles</li>
+<li>Reels y vídeo</li>
+<li>Guiones y dirección de grabación</li>
+<li>Vídeos de referencia</li>
+<li>Edición profesional de vídeo</li>
+<li>Copies</li>
+<li>Publicación en redes</li>
+<li>Coordinación mensual</li>
+</ul>
+<div class="package-note">Propuesta personalizada según necesidades.</div>
+</article>
+
+</div>
+</section>
+
+<section class="highlight">
+<div class="highlight-text">Tú aportas el conocimiento. Nosotros lo convertimos en contenido.</div>
+<div class="highlight-sub">Guiamos la grabación y adaptamos cada pieza a las tendencias y códigos de comunicación de tu nicho.</div>
+</section>
+
+<section class="section reels-section">
+<div class="section-head">
+<h2>Nuestros mejores<br>contenidos.</h2>
+<p class="intro">Una selección de contenidos creados para distintas marcas y proyectos.</p>
+</div>
+
+<div class="reels-track" id="reelsTrack"></div>
+<div class="reels-note">Puedes sustituir las URLs de Instagram en el código para actualizar esta selección.</div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<h2>Un mes de contenido,<br>bien pensado.</h2>
+<p class="intro">Detrás de cada publicación hay una planificación. Combinamos formatos, objetivos y códigos propios de cada marca.</p>
+</div>
+
+<div class="calendar">
+<div class="calendar-row calendar-head">
+<div></div>
+<div>Lunes</div>
+<div>Martes</div>
+<div>Miércoles</div>
+<div>Jueves</div>
+<div>Viernes</div>
+</div>
+
+<div class="calendar-row">
+<div class="calendar-label">SEMANA 01</div>
+<div><span class="content-tag">Reel</span><br>Educativo</div>
+<div></div>
+<div><span class="content-tag">Carrusel</span><br>Valor</div>
+<div></div>
+<div><span class="content-tag">Reel</span><br>Marca</div>
+</div>
+
+<div class="calendar-row">
+<div class="calendar-label">SEMANA 02</div>
+<div></div>
+<div><span class="content-tag">Post</span><br>Producto</div>
+<div></div>
+<div><span class="content-tag">Reel</span><br>Tendencia</div>
+<div></div>
+</div>
+
+<div class="calendar-row">
+<div class="calendar-label">SEMANA 03</div>
+<div><span class="content-tag">Reel</span><br>Educativo</div>
+<div></div>
+<div><span class="content-tag">Carrusel</span><br>Consejos</div>
+<div></div>
+<div><span class="content-tag">Reel</span><br>Comunidad</div>
+</div>
+
+<div class="calendar-row">
+<div class="calendar-label">SEMANA 04</div>
+<div></div>
+<div><span class="content-tag">Post</span><br>Producto</div>
+<div></div>
+<div><span class="content-tag">Reel</span><br>Tendencia</div>
+<div><span class="content-tag">Carrusel</span><br>CTA</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<h2>Cómo trabajamos.</h2>
+<p class="intro">Un proceso sencillo para que la creación de contenido no se convierta en otra tarea para tu equipo.</p>
+</div>
+
+<div class="how">
+<div class="step">
+<div class="step-number">01</div>
+<h3>Planificamos</h3>
+<p>Definimos los temas, formatos y objetivos del contenido del mes.</p>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<h3>Te damos la guía</h3>
+<p>Preparamos guiones, referencias e indicaciones para que puedas grabar tus vídeos con sentido.</p>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<h3>Lo convertimos</h3>
+<p>Editamos, adaptamos y publicamos el material para convertirlo en contenido preparado para redes.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="trabajos">
+<div class="section-head">
+<h2>Trabajo real.<br>Contenido real.</h2>
+<p class="intro">Una selección de marcas y proyectos en los que hemos trabajado.</p>
+</div>
+
+<div class="work-grid">
+<div class="work">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1500&q=85" alt="Proyecto de marca">
+<div class="work-label">Oliva Life · Contenido y estrategia</div>
+</div>
+
+<div class="stack">
+<div class="work small">
+<img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=85" alt="Planificación de contenidos">
+<div class="work-label">Enfermanía · Social Media</div>
+</div>
+
+<div class="work small">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85" alt="Estrategia de contenidos">
+<div class="work-label">Cuídate · Contenido</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta" id="contacto">
+<h2>¿Quieres que te ayudemos a impulsar el contenido de tu marca?</h2>
+<p>Cuéntanos qué necesitas y vemos cómo podemos ayudarte.</p>
+<a class="button" href="mailto:info@3dtwins.es">Escríbenos&nbsp; →</a>
+</section>
+
+</main>
+
+<footer>
+<div>Desarrollado por Virtuals Hubs · CEI · Avenida Decano de Albacete</div>
+<div>info@3dtwins.es · Privacidad · Cookies · Aviso legal</div>
+</footer>
+</div>
+
+<script>
+const videos=[
+"https://www.instagram.com/reel/CdDn7moIUsk/?hl=es",
+"https://www.instagram.com/reel/CZMiC6JK7yh/?hl=es",
+"https://www.instagram.com/reel/CTUftrMCc-j/?hl=es",
+"https://www.instagram.com/reel/CR86aVaivT3/?hl=es",
+"https://www.instagram.com/reel/CWs6p9zKHdG/?hl=es",
+"https://www.instagram.com/reel/Cb7hqYBoG-7/?hl=es",
+"https://www.instagram.com/reel/Cf89JxqoAuP/?hl=es",
+];
+
+const reelsTrack=document.getElementById("reelsTrack");
+
+videos.forEach(url=>{
+const card=document.createElement("div");
+card.className="reel-card";
+const embed=document.createElement("blockquote");
+embed.className="instagram-media";
+embed.setAttribute("data-instgrm-permalink",url);
+embed.setAttribute("data-instgrm-version","14");
+card.appendChild(embed);
+reelsTrack.appendChild(card);
+});
+
+const script=document.createElement("script");
+script.src="https://www.instagram.com/embed.js";
+script.async=true;
+document.body.appendChild(script);
+</script>
+
+</body>
+</html>
+
