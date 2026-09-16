@@ -49,6 +49,20 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .package-note{font-size:13px;color:#777;margin-top:24px}
 .web-package{max-width:780px}
 .web-package .package{min-height:0}
+.web-projects{margin-top:80px}
+.web-projects-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:30px}
+.web-projects-head h3{font-size:30px;font-weight:500;letter-spacing:-.045em;margin:0}
+.web-projects-head p{max-width:380px;color:#777;font-size:14px;margin:0}
+.web-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
+.web-project{border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;padding:25px;background:#f5f4f0}
+.web-project-logo{height:55px;display:flex;align-items:center;font-size:19px;font-weight:600;letter-spacing:-.04em;color:#444;margin-bottom:20px}
+.web-project-logo img{width:auto;height:auto;max-width:180px;max-height:45px;object-fit:contain}
+.web-project-image{height:300px;overflow:hidden;background:#ddd}
+.web-project-image img{transition:transform .5s ease}
+.web-project:hover .web-project-image img{transform:scale(1.025)}
+.web-project-footer{display:flex;justify-content:space-between;align-items:center;padding-top:17px;font-size:13px}
+.web-project-url{color:#777}
+.web-project-link{font-size:12px;color:#171717}
 .highlight{padding:115px 0}
 .highlight-text{font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.055em;font-weight:500;max-width:950px}
 .highlight-sub{margin-top:30px;color:#777}
@@ -97,6 +111,11 @@ h1{font-size:clamp(54px,15vw,86px)}
 .packages{grid-template-columns:1fr}
 .package{min-height:420px}
 .web-package{max-width:none}
+.web-projects{margin-top:60px}
+.web-projects-head{display:block}
+.web-projects-head p{margin-top:18px}
+.web-grid{grid-template-columns:1fr}
+.web-project-image{height:260px}
 .highlight{padding:80px 0}
 .reel-category-head{display:block}
 .reel-category h3{font-size:26px}
@@ -281,6 +300,61 @@ footer div+div{margin-top:8px}
 </ul>
 <div class="package-note">Cada proyecto se adapta a las necesidades de la marca.</div>
 </article>
+</div>
+
+<div class="web-projects">
+<div class="web-projects-head">
+<h3>Algunas webs que hemos creado.</h3>
+<p>Una selección de proyectos web desarrollados para distintas marcas y negocios.</p>
+</div>
+
+<div class="web-grid">
+
+<a class="web-project" href="https://test.olibalife.site/" target="_blank" rel="noopener">
+<div class="web-project-logo">Olibalife</div>
+<div class="web-project-image">
+<img src="https://test.olibalife.site/" alt="Web de Olibalife">
+</div>
+<div class="web-project-footer">
+<span class="web-project-url">test.olibalife.site</span>
+<span class="web-project-link">Ver web&nbsp; →</span>
+</div>
+</a>
+
+<a class="web-project" href="https://www.elfogonalbacete.es/" target="_blank" rel="noopener">
+<div class="web-project-logo">Restaurante El Fogón Albacete</div>
+<div class="web-project-image">
+<img src="https://www.elfogonalbacete.es/" alt="Web de Restaurante El Fogón Albacete">
+</div>
+<div class="web-project-footer">
+<span class="web-project-url">elfogonalbacete.es</span>
+<span class="web-project-link">Ver web&nbsp; →</span>
+</div>
+</a>
+
+<a class="web-project" href="https://www.cuerpoenaccion.es/actualidad" target="_blank" rel="noopener">
+<div class="web-project-logo">Cuerpo en Acción</div>
+<div class="web-project-image">
+<img src="https://www.cuerpoenaccion.es/actualidad" alt="Web de Cuerpo en Acción">
+</div>
+<div class="web-project-footer">
+<span class="web-project-url">cuerpoenaccion.es</span>
+<span class="web-project-link">Ver web&nbsp; →</span>
+</div>
+</a>
+
+<a class="web-project" href="https://www.tierramargourmet.com/" target="_blank" rel="noopener">
+<div class="web-project-logo">TierraMar Gourmet</div>
+<div class="web-project-image">
+<img src="https://www.tierramargourmet.com/" alt="Web de TierraMar Gourmet">
+</div>
+<div class="web-project-footer">
+<span class="web-project-url">tierramargourmet.com</span>
+<span class="web-project-link">Ver web&nbsp; →</span>
+</div>
+</a>
+
+</div>
 </div>
 </section>
 
@@ -516,3 +590,4 @@ document.body.appendChild(tiktokScript);
 
 </body>
 </html>
+
