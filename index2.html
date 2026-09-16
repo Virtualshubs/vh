@@ -58,9 +58,13 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .reel-category-number{font-size:11px;color:#888;letter-spacing:.14em;margin-bottom:9px}
 .reel-category h3{font-size:30px;font-weight:500;letter-spacing:-.045em;margin:0 0 6px}
 .reel-category p{font-size:14px;color:#777;margin:0}
-.reels-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 0 20px;scrollbar-width:thin}
-.reel-card{flex:0 0 320px;height:700px;background:#ddd;scroll-snap-align:start;overflow:hidden;position:relative}
-.reel-card .instagram-media{margin:0!important;min-width:100%!important;width:100%!important;height:auto!important}
+.reels-track{display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:0 0 24px;scrollbar-width:thin}
+.reel-card{flex:0 0 320px;min-height:760px;background:#ddd;scroll-snap-align:start;position:relative}
+.reel-card.instagram-card{height:760px;overflow:hidden}
+.reel-card.tiktok-card{height:700px;overflow:hidden}
+.reel-card blockquote{margin:0!important}
+.reel-card .instagram-media{width:100%!important;min-width:0!important;max-width:none!important}
+.reel-card .tiktok-embed{width:100%!important;min-width:0!important;max-width:none!important}
 .reels-note{font-size:12px;color:#888;margin-top:18px}
 .calendar{border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
 .calendar-row{display:grid;grid-template-columns:130px repeat(5,1fr)}
@@ -70,7 +74,6 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .content-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;color:#777}
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
 .brand{height:145px;display:flex;align-items:center;justify-content:center;padding:25px;border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;font-size:20px;font-weight:600;letter-spacing:-.04em;text-align:center;color:#444}
-.brand span{font-size:11px;font-weight:400;color:#999;display:block;margin-top:7px;letter-spacing:.03em}
 .cta{padding:150px 0;text-align:center}
 .cta h2{max-width:950px;margin:0 auto 35px}
 .cta p{color:#666;font-size:18px;margin:0 0 35px}
@@ -95,7 +98,9 @@ h1{font-size:clamp(54px,15vw,86px)}
 .highlight{padding:80px 0}
 .reel-category-head{display:block}
 .reel-category h3{font-size:26px}
-.reel-card{flex-basis:300px;height:680px}
+.reel-card{flex-basis:300px}
+.reel-card.instagram-card{height:760px}
+.reel-card.tiktok-card{height:700px}
 .calendar{overflow-x:auto}
 .calendar-row{min-width:720px}
 .brands-grid{grid-template-columns:repeat(2,1fr)}
@@ -277,7 +282,7 @@ footer div+div{margin-top:8px}
 <div class="reels-track" id="reelsOther"></div>
 </div>
 
-<div class="reels-note">Puedes actualizar cada selección sustituyendo las URLs de Instagram en el código.</div>
+<div class="reels-note">Puedes actualizar cada selección sustituyendo las URLs de Instagram o TikTok en el código.</div>
 </section>
 
 <section class="section">
@@ -405,30 +410,47 @@ const videosProduct=[
 ];
 
 const videosCommunity=[
-  "https://www.instagram.com/p/DZukxMNsn1f/?hl=es",
+"https://www.instagram.com/p/DZukxMNsn1f/?hl=es",
 "https://www.instagram.com/p/Da543Nci5hG/?hl=es",
 "https://www.instagram.com/p/DZlFZWXiCVs/?hl=es",
-"https://www.instagram.com/p/DdPROsOCjE4/?hl=es",
+"https://www.instagram.com/p/DdPROsOCjE4/?hl=es"
 ];
 
 const videosOther=[
-  "https://www.tiktok.com/@cuida.t/video/7104743924429753605?lang=es",
+"https://www.tiktok.com/@cuida.t/video/7104743924429753605?lang=es",
 "https://www.tiktok.com/@cuida.t/video/7381807285619739937?lang=es",
 "https://www.tiktok.com/@cuida.t/video/7068344800210193670?lang=es",
 "https://www.tiktok.com/@cuida.t/video/7382178579330649377?lang=es",
-"https://www.tiktok.com/@cuida.t/video/7463235911560596758?lang=es",
+"https://www.tiktok.com/@cuida.t/video/7463235911560596758?lang=es"
 ];
 
 function createReels(videos,target){
 const track=document.getElementById(target);
 videos.forEach(url=>{
 const card=document.createElement("div");
-card.className="reel-card";
+const isTikTok=url.includes("tiktok.com");
+card.className=`reel-card ${isTikTok?"tiktok-card":"instagram-card"}`;
+
+if(isTikTok){
+const match=url.match(/\/video\/(\d+)/);
+if(!match)return;
+const id=match[1];
+const embed=document.createElement("blockquote");
+embed.className="tiktok-embed";
+embed.setAttribute("cite",url);
+embed.setAttribute("data-video-id",id);
+embed.style.maxWidth="605px";
+embed.style.minWidth="325px";
+const section=document.createElement("section");
+embed.appendChild(section);
+card.appendChild(embed);
+}else{
 const embed=document.createElement("blockquote");
 embed.className="instagram-media";
 embed.setAttribute("data-instgrm-permalink",url);
 embed.setAttribute("data-instgrm-version","14");
 card.appendChild(embed);
+}
 track.appendChild(card);
 });
 }
@@ -437,12 +459,18 @@ createReels(videosProduct,"reelsProduct");
 createReels(videosCommunity,"reelsCommunity");
 createReels(videosOther,"reelsOther");
 
-const script=document.createElement("script");
-script.src="https://www.instagram.com/embed.js";
-script.async=true;
-document.body.appendChild(script);
+const instagramScript=document.createElement("script");
+instagramScript.src="https://www.instagram.com/embed.js";
+instagramScript.async=true;
+document.body.appendChild(instagramScript);
+
+const tiktokScript=document.createElement("script");
+tiktokScript.src="https://www.tiktok.com/embed.js";
+tiktokScript.async=true;
+document.body.appendChild(tiktokScript);
 </script>
 
 </body>
 </html>
+
 
