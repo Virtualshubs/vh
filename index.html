@@ -133,6 +133,25 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .ads-closing{padding:85px 0 0;max-width:850px}
 .ads-closing h4{font-size:clamp(30px,4vw,48px);font-weight:500;line-height:1;letter-spacing:-.05em;margin:0 0 20px}
 .ads-closing p{color:#777;margin:0}
+.ai-content{border-top:1px solid #d7d5cf;padding:80px 0 0;overflow:visible}
+.ai-content-inner{display:grid;grid-template-columns:minmax(320px,430px) 1fr;gap:65px;align-items:center}
+.ai-content-copy{position:relative;z-index:2}
+.ai-content-label{font-size:11px;letter-spacing:.14em;color:#888;margin-bottom:18px}
+.ai-content h3{font-size:clamp(38px,4.8vw,60px);font-weight:500;line-height:.95;letter-spacing:-.055em;margin:0 0 20px}
+.ai-content-intro{font-size:17px;color:#666;margin:0 0 26px}
+.ai-content-proposal{font-size:22px;line-height:1.15;letter-spacing:-.025em;margin:0 0 27px}
+.ai-benefits{border-top:1px solid #d7d5cf}
+.ai-benefit{padding:14px 0;border-bottom:1px solid #d7d5cf}
+.ai-benefit strong{display:block;font-size:14px;font-weight:500;margin-bottom:3px}
+.ai-benefit span{display:block;font-size:13px;color:#777}
+.ai-content-button{display:inline-flex;margin-top:25px;background:#171717;color:#fff;padding:13px 19px;border-radius:3px;font-size:13px}
+.ai-content-button:hover{background:#333}
+.ai-reels-window{position:relative;width:calc(100vw - ((100vw - min(1180px,calc(100% - 48px)))/2) - 15px);overflow:hidden}
+.ai-reels-track{display:flex;gap:16px;width:max-content;overflow:visible;padding:5px 0 20px}
+.ai-reel-card{width:260px;flex:0 0 260px;background:#ddd;overflow:hidden}
+.ai-reel-card blockquote{margin:0!important;width:100%!important;min-width:0!important;max-width:none!important}
+.ai-reel-card .instagram-media,.ai-reel-card .tiktok-embed{width:100%!important;min-width:0!important;max-width:none!important;margin:0!important}
+.ai-reels-window:after{content:"";position:absolute;top:0;right:0;width:90px;height:100%;background:linear-gradient(90deg,rgba(245,244,240,0),#f5f4f0);pointer-events:none}
 .calendar{border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
 .calendar-row{display:grid;grid-template-columns:130px repeat(5,1fr)}
 .calendar-row>div{min-height:76px;padding:16px;border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;font-size:13px}
@@ -180,6 +199,14 @@ h1{font-size:clamp(54px,15vw,86px)}
 .ads-product-grid{grid-template-columns:1fr}
 .ads-step{min-height:0}
 .ads-closing{padding:65px 0 0}
+.ai-content{padding:70px 0 0}
+.ai-content-inner{display:block}
+.ai-content-copy{max-width:560px}
+.ai-content h3{font-size:38px}
+.ai-content-proposal{font-size:20px}
+.ai-reels-window{width:calc(100vw - 15px);margin-top:50px}
+.ai-reel-card{width:260px;flex-basis:260px}
+.ai-reels-window:after{width:55px}
 .calendar{overflow-x:auto}
 .calendar-row{min-width:720px}
 .brands-grid{grid-template-columns:repeat(2,1fr)}
@@ -640,6 +667,42 @@ footer div+div{margin-top:8px}
 </div>
 </section>
 
+<section class="ai-content">
+<div class="ai-content-inner">
+
+<div class="ai-content-copy">
+<div class="ai-content-label">CONTENIDO CON IA</div>
+<h3>¿No tienes tiempo o recursos para grabar contenido?</h3>
+<p class="ai-content-intro">Busca nuevas formas de crecer orgánicamente y, al mismo tiempo, aportar valor a tus clientes.</p>
+<p class="ai-content-proposal">Reels estratégicos creados con inteligencia artificial.</p>
+
+<div class="ai-benefits">
+<div class="ai-benefit">
+<strong>Sin sesiones de grabación</strong>
+<span>Creamos las piezas a partir de una idea, producto, servicio o conocimiento de tu marca.</span>
+</div>
+
+<div class="ai-benefit">
+<strong>Pensados para crecer</strong>
+<span>Trabajamos conceptos, formatos y referencias adaptados a las tendencias de comunicación de cada nicho.</span>
+</div>
+
+<div class="ai-benefit">
+<strong>Contenido que aporta valor</strong>
+<span>Desarrollamos piezas que pueden enseñar, explicar, inspirar o despertar interés.</span>
+</div>
+</div>
+
+<a class="ai-content-button" href="#contacto">Quiero crear contenido sin grabar&nbsp; →</a>
+</div>
+
+<div class="ai-reels-window">
+<div class="ai-reels-track" id="reelsAI"></div>
+</div>
+
+</div>
+</section>
+
 <section class="section" id="trabajos">
 <div class="section-head">
 <h2>Marcas con las que<br>hemos trabajado.</h2>
@@ -703,6 +766,15 @@ const videosOther=[
 "https://www.tiktok.com/@cuida.t/video/7463235911560596758?lang=es"
 ];
 
+const videosAI=[
+"https://www.instagram.com/reel/CcNhmmkK1ON/?hl=es",
+"https://www.instagram.com/reel/CdDn7moIUsk/?hl=es",
+"https://www.instagram.com/reel/CYod6HHKCr4/?hl=es",
+"https://www.instagram.com/reel/CdgB-gkIcXo/?hl=es",
+"https://www.instagram.com/reel/CjqAd0AKRxh/?hl=es",
+"https://www.instagram.com/reel/CYJWK5Vq7uL/?hl=es"
+];
+
 function createReels(videos,target){
 const track=document.getElementById(target);
 videos.forEach(url=>{
@@ -733,9 +805,40 @@ track.appendChild(card);
 });
 }
 
+function createAIReels(videos,target){
+const track=document.getElementById(target);
+videos.forEach(url=>{
+const card=document.createElement("div");
+const isTikTok=url.includes("tiktok.com");
+card.className=`ai-reel-card ${isTikTok?"tiktok-card":"instagram-card"}`;
+if(isTikTok){
+const match=url.match(/\/video\/(\d+)/);
+if(!match)return;
+const id=match[1];
+const embed=document.createElement("blockquote");
+embed.className="tiktok-embed";
+embed.setAttribute("cite",url);
+embed.setAttribute("data-video-id",id);
+embed.style.maxWidth="605px";
+embed.style.minWidth="325px";
+const section=document.createElement("section");
+embed.appendChild(section);
+card.appendChild(embed);
+}else{
+const embed=document.createElement("blockquote");
+embed.className="instagram-media";
+embed.setAttribute("data-instgrm-permalink",url);
+embed.setAttribute("data-instgrm-version","14");
+card.appendChild(embed);
+}
+track.appendChild(card);
+});
+}
+
 createReels(videosProduct,"reelsProduct");
 createReels(videosCommunity,"reelsCommunity");
 createReels(videosOther,"reelsOther");
+createAIReels(videosAI,"reelsAI");
 
 const instagramScript=document.createElement("script");
 instagramScript.src="https://www.instagram.com/embed.js";
