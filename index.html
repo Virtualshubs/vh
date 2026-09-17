@@ -678,36 +678,30 @@ const typingSequences=[
 
 document.querySelectorAll(".typing-text").forEach((el,i)=>{
 const words=typingSequences[i%typingSequences.length];
-let word=0;
-let char=el.textContent.length;
-let deleting=false;
-
+let word=0,char=el.textContent.length,deleting=true;
 function type(){
+if(deleting){
+el.textContent=words[word].substring(0,--char);
+if(char<=0){
+word=(word+1)%words.length;
+deleting=false;
+char=0;
+setTimeout(type,500);
+return;
+}
+setTimeout(type,90);
+}else{
 const current=words[word];
-
-if(!deleting){
-el.textContent=current.substring(0,char+1);
-char++;
+el.textContent=current.substring(0,++char);
 if(char>=current.length){
 deleting=true;
-setTimeout(type,1400);
+setTimeout(type,2600);
 return;
 }
-setTimeout(type,70);
-}else{
-el.textContent=current.substring(0,char-1);
-char--;
-if(char<=0){
-deleting=false;
-word=(word+1)%words.length;
+setTimeout(type,120);
 }
-setTimeout(type,deleting?40:250);
-return;
 }
-setTimeout(type,70);
-}
-
-setTimeout(type,i*350);
+setTimeout(type,i*900);
 });
 </script>
 
