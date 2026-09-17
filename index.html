@@ -36,11 +36,11 @@
 ]
 }
 </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:#f5f4f0;color:#171717;font-family:Arial,Helvetica,sans-serif;line-height:1.45}
@@ -122,6 +122,7 @@ h2{font-size:clamp(40px,5vw,68px);font-weight:500;line-height:.95;letter-spacing
 .calendar-head>div{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#888;min-height:48px}
 .calendar-label{color:#777;background:#ebe9e3}
 .content-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;color:#777}
+.typing-text{display:inline-block;min-width:80px}
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7d5cf;border-left:1px solid #d7d5cf}
 .brand{height:145px;display:flex;align-items:center;justify-content:center;padding:25px;border-right:1px solid #d7d5cf;border-bottom:1px solid #d7d5cf;font-size:20px;font-weight:600;letter-spacing:-.04em;text-align:center;color:#444}
 .cta{padding:150px 0;text-align:center}
@@ -415,38 +416,38 @@ footer div+div{margin-top:8px}
 
 <div class="calendar-row">
 <div class="calendar-label">SEMANA 01</div>
-<div><span class="content-tag">Reel</span><br>Educativo</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Educativo</span></div>
 <div></div>
-<div><span class="content-tag">Carrusel</span><br>Valor</div>
+<div><span class="content-tag">Carrusel</span><br><span class="typing-text">Valor</span></div>
 <div></div>
-<div><span class="content-tag">Reel</span><br>Marca</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Marca</span></div>
 </div>
 
 <div class="calendar-row">
 <div class="calendar-label">SEMANA 02</div>
 <div></div>
-<div><span class="content-tag">Post</span><br>Producto</div>
+<div><span class="content-tag">Post</span><br><span class="typing-text">Producto</span></div>
 <div></div>
-<div><span class="content-tag">Reel</span><br>Tendencia</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Tendencia</span></div>
 <div></div>
 </div>
 
 <div class="calendar-row">
 <div class="calendar-label">SEMANA 03</div>
-<div><span class="content-tag">Reel</span><br>Educativo</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Educativo</span></div>
 <div></div>
-<div><span class="content-tag">Carrusel</span><br>Consejos</div>
+<div><span class="content-tag">Carrusel</span><br><span class="typing-text">Consejos</span></div>
 <div></div>
-<div><span class="content-tag">Reel</span><br>Comunidad</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Comunidad</span></div>
 </div>
 
 <div class="calendar-row">
 <div class="calendar-label">SEMANA 04</div>
 <div></div>
-<div><span class="content-tag">Post</span><br>Producto</div>
+<div><span class="content-tag">Post</span><br><span class="typing-text">Producto</span></div>
 <div></div>
-<div><span class="content-tag">Reel</span><br>Tendencia</div>
-<div><span class="content-tag">Carrusel</span><br>CTA</div>
+<div><span class="content-tag">Reel</span><br><span class="typing-text">Tendencia</span></div>
+<div><span class="content-tag">Carrusel</span><br><span class="typing-text">CTA</span></div>
 </div>
 </div>
 </section>
@@ -661,6 +662,53 @@ const tiktokScript=document.createElement("script");
 tiktokScript.src="https://www.tiktok.com/embed.js";
 tiktokScript.async=true;
 document.body.appendChild(tiktokScript);
+
+const typingSequences=[
+["Educativo","Producto","Consejos","Tendencia"],
+["Valor","Consejos","Inspiración","Educativo"],
+["Marca","Comunidad","Producto","Historia"],
+["Producto","Tendencia","Educativo","Conversión"],
+["Tendencia","Marca","Comunidad","Valor"],
+["Educativo","Consejos","Producto","Inspiración"],
+["Comunidad","Marca","Tendencia","Educativo"],
+["Producto","Valor","Conversión","Consejos"],
+["Tendencia","Educativo","Marca","Comunidad"],
+["CTA","Producto","Valor","Conversión"]
+];
+
+document.querySelectorAll(".typing-text").forEach((el,i)=>{
+const words=typingSequences[i%typingSequences.length];
+let word=0;
+let char=el.textContent.length;
+let deleting=false;
+
+function type(){
+const current=words[word];
+
+if(!deleting){
+el.textContent=current.substring(0,char+1);
+char++;
+if(char>=current.length){
+deleting=true;
+setTimeout(type,1400);
+return;
+}
+setTimeout(type,70);
+}else{
+el.textContent=current.substring(0,char-1);
+char--;
+if(char<=0){
+deleting=false;
+word=(word+1)%words.length;
+}
+setTimeout(type,deleting?40:250);
+return;
+}
+setTimeout(type,70);
+}
+
+setTimeout(type,i*350);
+});
 </script>
 
 </body>
