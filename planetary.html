@@ -316,9 +316,6 @@ let selectedItem=null;
 const statusElement=
 document.getElementById("status");
 
-const testsElement=
-document.getElementById("tests");
-
 const collectionsPanel=
 document.getElementById("collections-panel");
 
@@ -464,7 +461,7 @@ contentType
 async function testRoot(){
 
 const url=
-`${BASE}/`;
+BASE;
 
 try{
 
@@ -904,9 +901,7 @@ endpoint("search");
 try{
 
 const result=
-await request(
-url
-);
+await request(url);
 
 const data=
 result.data;
@@ -1042,11 +1037,8 @@ return;
 statusElement.textContent=
 `Testing ${BASE} ...`;
 
-let root;
-
 try{
 
-root=
 await testRoot();
 
 }catch(error){
@@ -1108,3 +1100,4 @@ runTests();
 
 </body>
 </html>
+
