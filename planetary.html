@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>STAC Web Index</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+padding:40px;
+background:#f4f4f4;
+color:#111;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+main{
+max-width:1100px;
+margin:auto;
+}
+
+h1{
+margin:0 0 10px;
+font-size:28px;
+font-weight:600;
+}
+
+.subtitle{
+margin:0 0 30px;
+color:#666;
+}
+
+.panel{
+background:#fff;
+border:1px solid #ddd;
+padding:24px;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:600;
+margin-bottom:8px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #bbb;
+font-size:14px;
+}
+
+button{
+margin-top:14px;
+padding:11px 18px;
+border:1px solid #111;
+background:#111;
+color:#fff;
+cursor:pointer;
+font-size:14px;
+}
+
+button:hover{
+background:#333;
+}
+
+.status{
+margin-top:18px;
+font-family:monospace;
+font-size:13px;
+white-space:pre-wrap;
+}
+
+.tests{
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.test{
+border:1px solid #ddd;
+padding:15px;
+background:#fafafa;
+}
+
+.test-head{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.test-name{
+font-weight:600;
+}
+
+.test-status{
+font-family:monospace;
+font-size:13px;
+}
+
+.pending{
+color:#777;
+}
+
+.ok{
+color:#087a28;
+}
+
+.fail{
+color:#b00020;
+}
+
+.details{
+margin-top:10px;
+font-family:monospace;
+font-size:12px;
+white-space:pre-wrap;
+word-break:break-word;
+color:#555;
+}
+
+.hidden{
+display:none;
+}
+
+.collections{
+margin-top:20px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:12px;
+}
+
+.collection{
+border:1px solid #ddd;
+padding:15px;
+background:#fafafa;
+cursor:pointer;
+}
+
+.collection:hover{
+background:#f0f0f0;
+}
+
+.collection-id{
+font-family:monospace;
+font-size:12px;
+color:#555;
+margin-top:6px;
+word-break:break-word;
+}
+
+pre{
+background:#111;
+color:#eee;
+padding:18px;
+overflow:auto;
+font-size:12px;
+line-height:1.5;
+}
+
+@media(max-width:700px){
+body{
+padding:20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+<h1>STAC Web Index</h1>
+
+<p class="subtitle">
+STAC API browser compatibility and structure test
+</p>
+
+<div class="panel">
+
+<label for="stac-url">STAC API</label>
+
+<input
+id="stac-url"
+type="url"
+value="https://planetarycomputer.microsoft.com/api/stac/v1"
+>
+
+<button id="run-tests">
+Run tests
+</button>
+
+<div id="status" class="status">
+Ready.
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>Web access</h2>
+
+<div id="tests" class="tests">
+
+<div class="test" id="test-root">
+<div class="test-head">
+<div class="test-name">1. Landing Page</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-conformance">
+<div class="test-head">
+<div class="test-name">2. Conformance</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-collections">
+<div class="test-head">
+<div class="test-name">3. Collections</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-collection">
+<div class="test-head">
+<div class="test-name">4. Collection</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-items">
+<div class="test-head">
+<div class="test-name">5. Items</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-item">
+<div class="test-head">
+<div class="test-name">6. Item</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-search">
+<div class="test-head">
+<div class="test-name">7. Search</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+<div class="test" id="test-queryables">
+<div class="test-head">
+<div class="test-name">8. Queryables</div>
+<div class="test-status pending">WAITING</div>
+</div>
+<div class="details"></div>
+</div>
+
+</div>
+
+</div>
+
+<div id="collections-panel" class="panel hidden">
+
+<h2>Collections</h2>
+
+<div id="collections" class="collections"></div>
+
+</div>
+
+<div id="collection-panel" class="panel hidden">
+
+<h2>Selected collection</h2>
+
+<pre id="collection-data"></pre>
+
+</div>
+
+<div id="item-panel" class="panel hidden">
+
+<h2>Items</h2>
+
+<pre id="item-data"></pre>
+
+</div>
+
+</main>
+
+<script>
+
+const DEFAULT_BASE=
+"https://planetarycomputer.microsoft.com/api/stac/v1";
+
+let BASE=DEFAULT_BASE;
+
+let collections=[];
+let selectedCollection=null;
+let selectedItem=null;
+
+const statusElement=
+document.getElementById("status");
+
+const testsElement=
+document.getElementById("tests");
+
+const collectionsPanel=
+document.getElementById("collections-panel");
+
+const collectionPanel=
+document.getElementById("collection-panel");
+
+const itemPanel=
+document.getElementById("item-panel");
+
+const collectionsElement=
+document.getElementById("collections");
+
+const collectionData=
+document.getElementById("collection-data");
+
+const itemData=
+document.getElementById("item-data");
+
+
+function setTest(id,status,details=""){
+
+const element=
+document.getElementById(id);
+
+const statusElement=
+element.querySelector(".test-status");
+
+const detailsElement=
+element.querySelector(".details");
+
+statusElement.className=
+"test-status "+(
+status==="OK"
+?"ok"
+:
+status==="FAIL"
+?"fail"
+:
+"pending"
+);
+
+statusElement.textContent=status;
+
+detailsElement.textContent=details;
+
+}
+
+
+function resetTests(){
+
+document
+.querySelectorAll(".test-status")
+.forEach(element=>{
+element.className="test-status pending";
+element.textContent="WAITING";
+});
+
+document
+.querySelectorAll(".details")
+.forEach(element=>{
+element.textContent="";
+});
+
+collections=[];
+selectedCollection=null;
+selectedItem=null;
+
+collectionsElement.innerHTML="";
+collectionData.textContent="";
+itemData.textContent="";
+
+collectionsPanel.classList.add("hidden");
+collectionPanel.classList.add("hidden");
+itemPanel.classList.add("hidden");
+
+}
+
+
+function normalizeBase(url){
+
+return url.trim().replace(/\/+$/,"");
+
+}
+
+
+function endpoint(path){
+
+return `${BASE}/${path}`;
+
+}
+
+
+async function request(url,options={}){
+
+const response=
+await fetch(
+url,
+{
+method:"GET",
+mode:"cors",
+cache:"no-store",
+...options
+}
+);
+
+if(!response.ok){
+
+throw new Error(
+`HTTP ${response.status} ${response.statusText}`
+);
+
+}
+
+const contentType=
+response.headers.get("content-type")||"";
+
+const text=
+await response.text();
+
+let data=null;
+
+try{
+
+data=JSON.parse(text);
+
+}catch(e){
+
+throw new Error(
+`Response is not valid JSON.\nContent-Type: ${contentType}`
+);
+
+}
+
+return{
+response,
+data,
+contentType
+};
+
+}
+
+
+async function testRoot(){
+
+const url=
+`${BASE}/`;
+
+try{
+
+const result=
+await request(url);
+
+const data=result.data;
+
+if(
+!data||
+typeof data!=="object"
+){
+
+throw new Error(
+"Landing Page is not a JSON object."
+);
+
+}
+
+setTest(
+"test-root",
+"OK",
+[
+`URL: ${url}`,
+`HTTP: ${result.response.status}`,
+`Content-Type: ${result.contentType}`,
+`type: ${data.type||"not declared"}`,
+`id: ${data.id||"not declared"}`
+].join("\n")
+);
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-root",
+"FAIL",
+[
+`URL: ${url}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`,
+"",
+"JavaScript could not obtain a readable response."
+].join("\n")
+);
+
+throw error;
+
+}
+
+}
+
+
+async function testConformance(){
+
+const url=
+endpoint("conformance");
+
+try{
+
+const result=
+await request(url);
+
+const data=result.data;
+
+const conforms=
+Array.isArray(data.conforms)
+?data.conforms.length
+:0;
+
+setTest(
+"test-conformance",
+"OK",
+[
+`URL: ${url}`,
+`HTTP: ${result.response.status}`,
+`Conformance classes: ${conforms}`
+].join("\n")
+);
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-conformance",
+"FAIL",
+[
+`URL: ${url}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+async function testCollections(){
+
+const url=
+endpoint("collections");
+
+try{
+
+const result=
+await request(url);
+
+const data=result.data;
+
+if(!Array.isArray(data.collections)){
+
+throw new Error(
+"Response does not contain a collections array."
+);
+
+}
+
+collections=
+data.collections;
+
+setTest(
+"test-collections",
+"OK",
+[
+`URL: ${url}`,
+`HTTP: ${result.response.status}`,
+`Collections: ${collections.length}`
+].join("\n")
+);
+
+renderCollections();
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-collections",
+"FAIL",
+[
+`URL: ${url}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+function renderCollections(){
+
+collectionsElement.innerHTML="";
+
+collectionsPanel.classList.remove("hidden");
+
+if(!collections.length){
+
+collectionsElement.textContent=
+"No collections returned.";
+
+return;
+
+}
+
+collections.forEach((collection,index)=>{
+
+const element=
+document.createElement("div");
+
+element.className="collection";
+
+element.innerHTML=`
+<strong>${escapeHTML(
+collection.title||collection.id||"Collection"
+)}</strong>
+<div class="collection-id">
+${escapeHTML(collection.id||"")}
+</div>
+`;
+
+element.onclick=
+()=>loadCollection(collection,index);
+
+collectionsElement.appendChild(element);
+
+});
+
+}
+
+
+async function loadCollection(collection,index){
+
+selectedCollection=collection;
+
+const href=
+collection.links?.find(
+link=>link.rel==="self"
+)?.href
+||
+`${BASE}/collections/${encodeURIComponent(
+collection.id
+)}`;
+
+collectionPanel.classList.remove("hidden");
+
+collectionData.textContent=
+"Loading collection...";
+
+try{
+
+const result=
+await request(href);
+
+const data=
+result.data;
+
+collectionData.textContent=
+JSON.stringify(data,null,2);
+
+setTest(
+"test-collection",
+"OK",
+[
+`URL: ${href}`,
+`HTTP: ${result.response.status}`,
+`ID: ${data.id||collection.id}`,
+`Title: ${data.title||""}`
+].join("\n")
+);
+
+await testItems(data);
+
+await testItem(data);
+
+await testQueryables(data);
+
+}catch(error){
+
+collectionData.textContent=
+error.message;
+
+setTest(
+"test-collection",
+"FAIL",
+[
+`URL: ${href}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+}
+
+}
+
+
+async function testItems(collection){
+
+const itemLink=
+collection.links?.find(
+link=>link.rel==="items"
+);
+
+if(!itemLink){
+
+setTest(
+"test-items",
+"FAIL",
+"Collection does not expose a rel=\"items\" link."
+);
+
+return null;
+
+}
+
+const href=itemLink.href;
+
+try{
+
+const result=
+await request(href);
+
+const data=result.data;
+
+if(
+!Array.isArray(data.features)
+){
+
+throw new Error(
+"Items response does not contain a features array."
+);
+
+}
+
+setTest(
+"test-items",
+"OK",
+[
+`URL: ${href}`,
+`HTTP: ${result.response.status}`,
+`Items returned: ${data.features.length}`
+].join("\n")
+);
+
+if(data.features.length){
+
+selectedItem=
+data.features[0];
+
+}
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-items",
+"FAIL",
+[
+`URL: ${href}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+async function testItem(collection){
+
+if(!selectedItem){
+
+setTest(
+"test-item",
+"FAIL",
+"No Item available to test."
+);
+
+return null;
+
+}
+
+let href=
+selectedItem.links?.find(
+link=>link.rel==="self"
+)?.href;
+
+if(!href){
+
+const itemId=
+selectedItem.id;
+
+const collectionId=
+collection.id;
+
+if(!itemId||!collectionId){
+
+setTest(
+"test-item",
+"FAIL",
+"Cannot construct Item URL."
+);
+
+return null;
+
+}
+
+href=
+`${BASE}/collections/`+
+`${encodeURIComponent(collectionId)}/items/`+
+`${encodeURIComponent(itemId)}`;
+
+}
+
+try{
+
+const result=
+await request(href);
+
+const data=result.data;
+
+itemPanel.classList.remove("hidden");
+
+itemData.textContent=
+JSON.stringify(data,null,2);
+
+setTest(
+"test-item",
+"OK",
+[
+`URL: ${href}`,
+`HTTP: ${result.response.status}`,
+`ID: ${data.id||"not declared"}`,
+`Type: ${data.type||"not declared"}`
+].join("\n")
+);
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-item",
+"FAIL",
+[
+`URL: ${href}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+async function testSearch(){
+
+const url=
+endpoint("search");
+
+try{
+
+const result=
+await request(
+url
+);
+
+const data=
+result.data;
+
+setTest(
+"test-search",
+"OK",
+[
+`URL: ${url}`,
+`HTTP: ${result.response.status}`,
+`Response type: ${data.type||"not declared"}`,
+`Features: ${
+Array.isArray(data.features)
+?data.features.length
+:"not declared"
+}`
+].join("\n")
+);
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-search",
+"FAIL",
+[
+`URL: ${url}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+async function testQueryables(collection){
+
+if(!collection){
+
+setTest(
+"test-queryables",
+"FAIL",
+"No collection available."
+);
+
+return null;
+
+}
+
+const collectionId=
+collection.id;
+
+const href=
+`${BASE}/collections/`+
+`${encodeURIComponent(collectionId)}/queryables`;
+
+try{
+
+const result=
+await request(href);
+
+const data=
+result.data;
+
+setTest(
+"test-queryables",
+"OK",
+[
+`URL: ${href}`,
+`HTTP: ${result.response.status}`,
+`Type: ${data.type||"not declared"}`
+].join("\n")
+);
+
+return data;
+
+}catch(error){
+
+setTest(
+"test-queryables",
+"FAIL",
+[
+`URL: ${href}`,
+`Error: ${error.name}`,
+`Message: ${error.message}`
+].join("\n")
+);
+
+return null;
+
+}
+
+}
+
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+async function runTests(){
+
+resetTests();
+
+BASE=
+normalizeBase(
+document
+.getElementById("stac-url")
+.value
+);
+
+if(!BASE){
+
+statusElement.textContent=
+"STAC URL required.";
+
+return;
+
+}
+
+statusElement.textContent=
+`Testing ${BASE} ...`;
+
+let root;
+
+try{
+
+root=
+await testRoot();
+
+}catch(error){
+
+statusElement.textContent=
+"Landing Page failed. Browser cannot read the STAC API.";
+
+return;
+
+}
+
+await testConformance();
+
+const collectionsData=
+await testCollections();
+
+if(
+collectionsData&&
+collections.length
+){
+
+statusElement.textContent=
+`Web access OK. ${collections.length} collections available. Select a collection below.`;
+
+}else{
+
+statusElement.textContent=
+"Landing Page readable, but Collections failed.";
+
+}
+
+await testSearch();
+
+}
+
+
+document
+.getElementById("run-tests")
+.onclick=
+runTests;
+
+
+document
+.getElementById("stac-url")
+.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Enter"){
+
+runTests();
+
+}
+
+}
+);
+
+</script>
+
+</body>
+</html>
